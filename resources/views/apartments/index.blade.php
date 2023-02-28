@@ -4,39 +4,39 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <a href="{{ route('homes.create') }}">Создать</a>
+            <a href="{{ route('apartments.create') }}">Создать</a>
         </div>
     </div>
-    @foreach($homes as $home)
+    @foreach($apartments as $apartment)
         <div class="row">
             <div class="col-1">
-                {{ $home->id }}
+                {{ $apartment->id }}
             </div>
             <div class="col-2">
-                {{ $home->name }}
+                {{ $apartment->area }}
             </div>
             <div class="col-1">
-                {{ $home->price }}
+                {{ $apartment->floor }}
             </div>
             <div class="col-1">
-                {{ $home->year_of_build }}
+                {{ $apartment->count_of_rooms }}
             </div>
             <div class="col-1">
-                {{ $home->count_of_floors }}
+                {{ $apartment->home->name }}
             </div>
             <div class="col-3 d-flex">
-                <a href="{{ route('homes.show', $home) }}" class="btn">Посмотреть</a>
-                <a href="{{ route('homes.edit', $home) }}" class="btn">Изменить</a>
-                <form id="delete-form-{{ $home->id }}" action="{{ route('sales.destroy', $home) }}" method="post">
+                <a href="{{ route('apartments.show', $apartment) }}" class="btn">Посмотреть</a>
+                <a href="{{ route('apartments.edit', $apartment) }}" class="btn">Изменить</a>
+                <form id="delete-form-{{ $apartment->id }}" action="{{ route('apartments.destroy', $apartment) }}" method="post">
                     @csrf
                     @method('DELETE')
                 </form>
-                <button type="submit" form="delete-form-{{ $home->id }}" class="btn btn-danger">Удалить</button>
+                <button type="submit" form="delete-form-{{ $apartment->id }}" class="btn btn-danger">Удалить</button>
             </div>
             <div class="col-2">
             </div>
         </div>
     @endforeach
-    <div class="col-12">{{ $homes->links() }}</div>
+    <div class="col-12">{{ $apartments->links() }}</div>
 </div>
 @endsection

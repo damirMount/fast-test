@@ -2,23 +2,33 @@
 
 <div class="container">
     <div class="row">
-        <form action="{{ route('homes.update', $home) }}" method="post">
+        <form action="{{ route('apartments.update', $apartment) }}" method="post">
             @csrf
             @method('PUT')
             <div class="form-group">
-                <label for="input-name">Наименование</label>
-                <input id="input-name" type="text" name="name" value="{{ old('name', $home->name) }}">
+                <label for="input-area">Плошадь</label>
+                <input id="input-area" type="text" name="area" value="{{ old('area', $apartment->area) }}">
             </div>
             <div class="form-group">
-                <label for="input-price">Цена за кв./м</label>
-                <input id="input-price" type="number" name="price" value="{{ old('price', $home->price) }}">
+                <label for="input-floor">Этаж</label>
+                <input id="input-floor" type="number" name="floor" value="{{ old('floor', $apartment->floor) }}">
             </div>
             <div class="form-group">
-                <label for="input-year_of_build">Год постройки</label>
-                <input id="input-year_of_build" type="number" name="year_of_build" value="{{ old('year_of_build', $home->year_of_build) }}"></div>
+                <label for="input-count_of_rooms">Количество комнат</label>
+                <input id="input-count_of_rooms" type="number" name="count_of_rooms" value="{{ old('count_of_rooms', $apartment->count_of_rooms) }}"></div>
             <div class="form-group">
-                <label for="input-count_of_floors">Количество этажей</label>
-                <input id="input-count_of_floors" type="number" name="count_of_floors" value="{{ old('count_of_floors', $home->count_of_floors) }}"></div>
+                <label for="input-home_id">Дом</label>
+                <select id="input-home_id" name="home_id">
+                    @foreach($homes as $home)
+                        @if($home->id == $apartment->home->id)
+                            <option value="{{ $home->id }}" selected>{{ $home->name }}</option>
+                        @else
+                            <option value="{{ $home->id }}">{{ $home->name }}</option>
+                        @endif
+                    @endforeach
+                </select>
+
+            </div>
             <button type="submit">Сохранить</button>
         </form>
     </div>

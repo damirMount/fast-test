@@ -4,19 +4,16 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                {{ $home->id }}
+                {{ $client->id }}
             </div>
             <div class="col-12">
-                {{ $home->name }}
+                {{ $client->full_name }}
             </div>
             <div class="col-12">
-                {{ $home->price }}
+                {{ $client->phone_number }}
             </div>
             <div class="col-12">
-                {{ $home->year_of_build }}
-            </div>
-            <div class="col-12">
-                {{ $home->count_of_floors }}
+                {{ $client->email }}
             </div>
         </div>
     </div>

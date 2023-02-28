@@ -2,22 +2,24 @@
 
 <div class="container">
     <div class="row">
-        <form action="{{ route('homes.store') }}" method="post">
+        <form action="{{ route('sales.store') }}" method="post">
             @csrf
             <div class="form-group">
-                <label for="input-name">Наименование</label>
-                <input id="input-name" type="text" name="name">
+                <label for="input-client_id">Клиент</label>
+                <select id="input-client_id" name="client_id">
+                    @foreach($clients as $client)
+                        <option value="{{ $client->id }}">{{ $client->full_name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
-                <label for="input-price">Цена за кв./м</label>
-                <input id="input-price" type="number" name="price">
+                <label for="input-apartment_id">Квартира</label>
+                <select id="input-apartment_id" name="apartment_id">
+                    @foreach($apartments as $apartment)
+                        <option value="{{ $apartment->id }}">{{ $apartment->home->name }} -- {{ $apartment->floor }} -- {{ $apartment->area }} -- {{ $apartment->count_of_rooms }}</option>
+                    @endforeach
+                </select>
             </div>
-            <div class="form-group">
-                <label for="input-year_of_build">Год постройки</label>
-                <input id="input-year_of_build" type="number" name="year_of_build"></div>
-            <div class="form-group">
-                <label for="input-count_of_floors">Количество этажей</label>
-                <input id="input-count_of_floors" type="number" name="count_of_floors"></div>
             <button type="submit">Сохранить</button>
         </form>
     </div>

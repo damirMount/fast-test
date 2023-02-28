@@ -12,9 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index'])->name('index');
 
-Route::get('/', [\App\Http\Controllers\FakeController::class, 'index']);
-//Route::get('/', [\App\Http\Controllers\FakeController::class, 'index1']);
-Route::post('/1', [\App\Http\Controllers\FakeController::class, 'index1'])->name('post.form');
-
-//Route::get('/index', [\App\Http\Controllers\UserController::class, 'index']);
+Route::resources([
+    'homes' => \App\Http\Controllers\HomeController::class,
+    'apartments' => \App\Http\Controllers\ApartmentController::class,
+    'clients' => \App\Http\Controllers\ClientController::class,
+    'sales' => \App\Http\Controllers\SaleController::class,
+]);
