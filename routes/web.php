@@ -20,3 +20,7 @@ Route::resources([
     'clients' => \App\Http\Controllers\ClientController::class,
     'sales' => \App\Http\Controllers\SaleController::class,
 ]);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
