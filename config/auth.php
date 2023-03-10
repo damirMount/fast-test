@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+            'hash' => true,
+        ],
     ],
 
     /*
@@ -85,6 +90,11 @@ return [
     | they have less time to be guessed. You may change this as needed.
     |
     */
+    'api' => [
+        'driver' => 'passport',
+        'provider' => 'users',
+        'hash' => true,
+    ],
 
     'passwords' => [
         'users' => [

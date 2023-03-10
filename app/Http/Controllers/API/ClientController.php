@@ -24,10 +24,34 @@ class ClientController extends Controller
             'email' => 'required|string'
         ]);
 
-        if ($validation->fails()){
-            return response()->json(['status' => 'error', 'message' => $validation->getMessageBag()], 400);
-        } else {
-            return response()->json(['status' => 'success', 'clients' => Client::create($request->all())], 200);
-        }
+
+
+//        if ($validation->fails()){
+//            return response()->json(['status' => 'error', 'message' => $validation->getMessageBag()], 400);
+//        } else {
+//            return response()->json(['status' => 'success', 'clients' => Client::create($request->all())], 200);
+//        }
+    }
+
+    public function show(Client $client)
+    {
+        return response()->json(['client' => $client, 'status' => 'success']);
+    }
+
+    public function update(Request $request, Client $client)
+    {
+        return response()->json(['clients' => $request->all()], 200);
+
+//        $validation = Validator::make($request->all(), [
+//            'full_name' => 'required|string:200',
+//            'phone_number' => 'required|string',
+//            'email' => 'required|string'
+//        ]);
+//
+//        if ($validation->fails()){
+//            return response()->json(['status' => 'error', 'message' => $validation->getMessageBag()], 400);
+//        } else {
+//            return response()->json(['status' => 'success', 'clients' => $client->update($request->all())], 200);
+//        }
     }
 }
