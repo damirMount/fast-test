@@ -9,7 +9,7 @@ class Book extends Model
 {
     use HasFactory;
 
-    public function libraries()
+    public function library()
     {
         return $this->belongsTo(Library::class);
     }
