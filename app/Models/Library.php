@@ -9,7 +9,7 @@ class Library extends Model
 {
     use HasFactory;
 
-    public function Books()
+    public function books()
     {
         return $this->hasMany(Book::class);
     }
