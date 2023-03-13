@@ -32,7 +32,6 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::post('clients/store', [ClientController::class, 'store'])->name('clients.api.store');
     Route::get( '/clients/show/{client}', [ClientController::class, 'show'])->name('clients.api.show');
     Route::put('/clients/update/{client}', [ClientController::class, 'update'])->name('clients.api.update');
-
 });
 
 Route::post('/register', [AuthController::class, 'register']);
