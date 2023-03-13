@@ -11,5 +11,7 @@
             @endforeach
         @endforeach
 
+<h1>Hello from Nikita K!</h1>
+        <p>Hello guys!</p>
     </div>
 @endsection
