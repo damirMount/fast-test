@@ -10,6 +10,7 @@
                 </div>
             @endforeach
         @endforeach
+        <p></p>
         <p>Hello guys!</p>
             <h1> Hello from Nikita_k</h1>
     </div>
