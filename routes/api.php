@@ -26,3 +26,5 @@ Route::get('/clients/show/{client}', [\App\Http\Controllers\API\ClientController
 Route::put('/clients/update/{client}', [\App\Http\Controllers\API\ClientController::class, 'update'])->name('clients.api.update');
 
 Route::middleware('auth:api')->get('/getToken', [\App\Http\Controllers\API\TokenController::class, 'generateToken'])->name('generate.token');
+
+Route::post('/register', [\App\Http\Controllers\API\AuthController::class, 'register'])->name('register.api.store');
