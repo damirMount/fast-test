@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ClientController;
+use App\Http\Controllers\API\TokenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/clients', [\App\Http\Controllers\API\ClientController::class, 'index'])->name('clients.api.index');
 Route::post('clients/store', [\App\Http\Controllers\API\ClientController::class, 'store'])->name('clients.api.store');
+Route::middleware('auth:sanctum')->get('clients', [ClientController::class, 'index'])->name('clients.api.index');
+Route::get('/clients/show/{client}', [ClientController::class, 'show'])->name('clients.api.show');
+
+Route::middleware('auth')->get('/getToken', [TokenController::class, 'generateToken'])->name('generate.token');
+
+Route::post('/clients/update/{client}', [ClientController::class, 'update'])->name('clients.api.update');
