@@ -10,6 +10,6 @@
                 </div>
             @endforeach
         @endforeach
-        <p>Hello guys!</p>
+        <p>Hello guys!</p>dima
     </div>
 @endsection
