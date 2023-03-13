@@ -15,9 +15,15 @@ use App\Http\Controllers\API\ClientController;
 |
 */
 
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});       
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
-Route::middleware('auth:sanctum')->get('/clients', [ClientController::class, 'index'])->name('clients.api.index');
-Route::post('clients/store', [ClientController::class, 'store'])->name('clients.api.store');
+Route::get('/clients', [\App\Http\Controllers\API\ClientController::class, 'index'])->name('clients.api.index');
+Route::post('clients/store', [\App\Http\Controllers\API\ClientController::class, 'store'])->name('clients.api.store');
+Route::middleware('auth:sanctum')->get('clients', [ClientController::class, 'index'])->name('clients.api.index');
+Route::get('/clients/show/{client}', [ClientController::class, 'show'])->name('clients.api.show');
+
+Route::middleware('auth')->get('/getToken', [TokenController::class, 'generateToken'])->name('generate.token');
+
+Route::post('/clients/update/{client}', [ClientController::class, 'update'])->name('clients.api.update');
