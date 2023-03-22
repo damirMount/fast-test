@@ -38,4 +38,6 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/getToken', [TokenController::class, 'generateToken'])->name('generate.token');
 
-
+Route:: middleware ( 'auth:sanctum' )->group(function () {
+    Route::get('/me',[AuthController::class, 'me']) ;
+}) ;
