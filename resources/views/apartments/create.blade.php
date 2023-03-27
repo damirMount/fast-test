@@ -1,8 +1,9 @@
-@extends('layout')
+@extends('layouts.app')
+@section('content')
 
 <div class="container">
     <div class="row">
-        <form action="{{ route('apartments.store') }}" method="post">
+        <form action="{{ route('apartments.store') }}" method="post" >
             @csrf
             <div class="form-group">
                 <label for="input-area">Плошадь</label>
@@ -24,7 +25,24 @@
                 </select>
 
             </div>
-            <button type="submit">Сохранить</button>
+            <button type="submit" id="submit">Сохранить</button>
         </form>
+
+
+        <div id="div">
+
+        </div>
     </div>
 </div>
+
+<script>
+
+    $('#submit').click(function (e) {
+        e.preventDefault();
+        let data = $('#form').serialize();
+        // $("#div").text($("form").serialize());
+        console.log(data);
+    })
+</script>
+
+@endsection

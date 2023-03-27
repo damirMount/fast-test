@@ -17,11 +17,13 @@ Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index'])->name
 Route::resources([
     'homes' => \App\Http\Controllers\HomeController::class,
     'apartments' => \App\Http\Controllers\ApartmentController::class,
-//    'clients' => \App\Http\Controllers\ClientController::class,
+    'clients' => \App\Http\Controllers\ClientController::class,
     'sales' => \App\Http\Controllers\SaleController::class,
 ]);
+
+Route::get('/get-home-info', [\App\Http\Controllers\HomeController::class, 'getHome'])->name('get.home');
 
 Auth::routes();
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
