@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Services\ImageUploader;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -41,6 +42,9 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = Product::create($request->all());
+        if ($request->has('image')) {
+            $product->image = ImageUploader::upload($request->image, 'product', 'image');
+        }
 
         $product->save();
 
