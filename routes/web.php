@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ApartmentController;
+use \App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +24,14 @@ Route::resources([
     'sales' => \App\Http\Controllers\SaleController::class,
 ]);
 
-Auth::routes();
+//Auth::routes();
+Route::get('/get-home-info', [App\Http\Controllers\HomeController::class, 'getHome'])->name('get.home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/get-apartments-info', [App\Http\Controllers\ApartmentController::class, 'getApartments'])->name('get.apartments');
+Route::post('/add-home', [App\Http\Controllers\HomeController::class, 'addHome'])->name('add.home');
+Route::get('/getLastHome', [App\Http\Controllers\HomeController::class, 'getLastHome'])->name('getLastHome');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('get-apart', [App\Http\Controllers\ApartmentController::class, 'getApart'])->name('get.apart');
+
+Route::resource('products', \App\Http\Controllers\ProductController::class);
+

@@ -38,6 +38,7 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->area);
         Apartment::create($request->all());
         return redirect()->route('apartments.index');
     }
@@ -90,5 +91,13 @@ class ApartmentController extends Controller
         $apartment->delete();
 
         return redirect()->route('apartments.index');
+    }
+
+    public function getApartments(Request $request)
+    {
+        $apartments = Apartment::where('home_id', '=', $request->id)->get();
+//        $view = view('apartments.info', compact('apartments'))->render();
+
+        return response()->json(['appartments' => $apartments]);
     }
 }

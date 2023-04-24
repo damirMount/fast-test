@@ -28,3 +28,13 @@ Route::put('/clients/update/{client}', [\App\Http\Controllers\API\ClientControll
 Route::middleware('auth:api')->get('/getToken', [\App\Http\Controllers\API\TokenController::class, 'generateToken'])->name('generate.token');
 
 Route::post('/register', [\App\Http\Controllers\API\AuthController::class, 'register'])->name('register.api.store');
+
+Route::post('/fileBase64', [\App\Http\Controllers\API\FileBase64Controller::class, 'store'])->name('fileBase64');
+
+Route::post('/upload-files', function (Request $request){
+   $data = base64_decode($request->input('img'));
+   $nameUniq = uniqid('file_');
+   Storage::put("avatars/$nameUniq". '.jpg', $data);
+
+//   $data = base64_encode(Storage::get("avatars/$nameUniq.".$request->input('ext')));
+});
