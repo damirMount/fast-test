@@ -10,6 +10,7 @@ class Sale extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $fillable = ['id', 'name'];
 
     public function apartment()
     {

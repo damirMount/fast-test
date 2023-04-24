@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +15,25 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index'])->name('index');
 
+
+Route::get('battle', [\App\Http\Controllers\BattleController::class, 'index']);
+Route::get('battle/start', [\App\Http\Controllers\BattleController::class, 'start'])->name('battle.start');
+
 Route::resources([
     'homes' => \App\Http\Controllers\HomeController::class,
     'apartments' => \App\Http\Controllers\ApartmentController::class,
-    'clients' => \App\Http\Controllers\ClientController::class,
+//    'clients' => \App\Http\Controllers\ClientController::class,
     'sales' => \App\Http\Controllers\SaleController::class,
 ]);
 
 Route::get('/get-home-info', [\App\Http\Controllers\HomeController::class, 'getHome'])->name('get.home');
 
 Auth::routes();
+
+Route::get('get-apart', [\App\Http\Controllers\HomeController::class, 'add'])->name('add.apart');
+
+Route::resource('products', ProductController::class);
+
 
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

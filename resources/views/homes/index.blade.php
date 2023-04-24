@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+v
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -15,7 +13,6 @@
             <div class="col-2 ">
                 <a href="#" class="btn btn-primary btn-sm home-id" id="home-{{$home->id}}"   data-id="{{ $home->id }}">{{ $home->name }}</a>
             </div>
-
 {{--            <div class="col-3 d-flex">--}}
 {{--                <a href="{{ route('homes.show', $home) }}" class="btn">Посмотреть</a>--}}
 {{--                <a href="{{ route('homes.edit', $home) }}" class="btn">Изменить</a>--}}

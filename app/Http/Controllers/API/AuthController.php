@@ -56,24 +56,7 @@ class AuthController extends Controller
             'token_type' => 'Bearer',
         ]);
     }
-    public function converter(Request $request)
-    {
-        $pnr_code = $request->all();
-        if (isset($airport_out))
-        {
-            return response()->json(['message'=>"not found airport_out"],404);
-        } else if(isset($airport_in)) {
-            return response()->json(['message'=>"not found airport_in"],404);
-        }else if(isset($plane)) {
-            return response()->json(['message' => "not found plane"], 404);
-        }else if(isset($aircompany)) {
-            return response()->json(['message' => "not found aircompany"], 404);
-        }
-    }
-        // your code for parsing pnr code ...
 
-        return response()->json(['data' => $]);
-    }
 
     public function me(Request $request)
     {

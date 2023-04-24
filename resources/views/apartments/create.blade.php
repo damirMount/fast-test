@@ -3,8 +3,8 @@
 
 <div class="container">
     <div class="row">
-        <form action="{{ route('apartments.store') }}" method="post" >
-            @csrf
+        <form action="{{ route('apartments.store') }}" method="post" id="form">
+{{--            @csrf--}}
             <div class="form-group">
                 <label for="input-area">Плошадь</label>
                 <input id="input-area" type="text" name="area">
@@ -39,7 +39,7 @@
 
     $('#submit').click(function (e) {
         e.preventDefault();
-        let data = $('#form').serialize();
+        let data = $('#form').serializeArray();
         // $("#div").text($("form").serialize());
         console.log(data);
     })

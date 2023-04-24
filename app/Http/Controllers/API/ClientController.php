@@ -24,13 +24,11 @@ class ClientController extends Controller
             'email' => 'required|string'
         ]);
 
-
-
-//        if ($validation->fails()){
-//            return response()->json(['status' => 'error', 'message' => $validation->getMessageBag()], 400);
-//        } else {
-//            return response()->json(['status' => 'success', 'clients' => Client::create($request->all())], 200);
-//        }
+        if ($validation->fails()){
+            return response()->json(['status' => 'error', 'message' => $validation->getMessageBag()], 400);
+        } else {
+            return response()->json(['status' => 'success', 'clients' => Client::create($request->all())], 200);
+        }
     }
 
     public function show(Client $client)

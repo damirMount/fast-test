@@ -21,6 +21,15 @@ use App\Http\Controllers\API\AuthController;
 //});
 
 
+
+
+
+
+
+
+
+
+
 Route::post('/tokens/create', function (Request $request) {
     $token = $request->user()->createToken($request->token_name);
 
@@ -28,7 +37,9 @@ Route::post('/tokens/create', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->group(function() {
-    Route::get('clients', [ClientController::class, 'index'])->name('clients.api.index');
+    Route::post('client/store', [ClientController::class, 'store']);
+    Route::get('clients', [ClientController::class, 'index']);
+
     Route::post('clients/store', [ClientController::class, 'store'])->name('clients.api.store');
     Route::get( '/clients/show/{client}', [ClientController::class, 'show'])->name('clients.api.show');
     Route::put('/clients/update/{client}', [ClientController::class, 'update'])->name('clients.api.update');

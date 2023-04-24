@@ -9,6 +9,20 @@ class Apartment extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $fillable = ['id','name', 'address'];
+
+
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
+    public function getId(strind $id)
+    {
+        return $this->id;
+    }
+
+
     public function home()
     {
         return $this->belongsTo(Home::class);
