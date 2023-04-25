@@ -37,6 +37,10 @@
             </div>
         </div>
     @endforeach
-    <div class="col-12">{{ $apartments->links() }}</div>
+    <div class="col-12">
+        <div>
+            {{ $apartments->links() }}
+        </div>
+    </div>
 </div>
 @endsection
