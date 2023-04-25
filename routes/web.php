@@ -31,3 +31,7 @@ Route::post('submit', function (\Illuminate\Http\Request $request) {
         Storage::disk('public')->put($querty->getClientOriginalName(), file_get_contents($querty));
     }
 })->name('submit');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

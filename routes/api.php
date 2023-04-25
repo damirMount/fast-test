@@ -38,3 +38,9 @@ Route::post('/upload-files', function (Request $request) {
     dd($data);
 });
 
+Route::middleware('auth:sanctum')->get('clients', [ClientController::class, 'index'])->name('clients.api.index');
+Route::get('/clients/show/{client}', [ClientController::class, 'show'])->name('clients.api.show');
+
+Route::middleware('auth')->get('/getToken', [TokenController::class, 'generateToken'])->name('generate.token');
+
+Route::post('/clients/update/{client}', [ClientController::class, 'update'])->name('clients.api.update');

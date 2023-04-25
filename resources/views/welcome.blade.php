@@ -10,7 +10,11 @@
                 </div>
             @endforeach
         @endforeach
-
+        <p>Hello guys!@@@@@Nikka</p>
+        <p>Hello guys!</p>dima
+    <p>Erniz changed this file.</p>
+            <h1> Hello from Nikita_k</h1>
+            <h1> Hello from AZRET</h1>
     </div>
 @endsection
 
