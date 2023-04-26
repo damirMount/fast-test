@@ -61,7 +61,8 @@ class ItemController extends Controller
      */
     public function edit(Item $items)
     {
-        //
+        $items = Home::all();
+        return view('items.edit',compact('items'));
     }
 
     /**
@@ -73,7 +74,9 @@ class ItemController extends Controller
      */
     public function update(Request $request, Item $items)
     {
-        //
+        $items->update($request->all());
+
+        return redirect()->route('items.index');
     }
 
     /**
@@ -84,6 +87,8 @@ class ItemController extends Controller
      */
     public function destroy(Item $items)
     {
-        //
+        $items->delete();
+
+        return redirect()->route('apartments.index');
     }
 }

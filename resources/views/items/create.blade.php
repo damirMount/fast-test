@@ -10,12 +10,12 @@
     <title>Items</title>
 </head>
 <body>
-<form action="{{route('items.post')}}"method="post">
+<form action="{{route('items.store')}}"method="post" ecrypt="multipart/form-data">
     @csrf
     @method('PATCH');
 <div class="input-group input-group-sm mb-3">
         <label for="photot_link" class="form-label"><span class="input-group-text" id="inputGroup-sizing-sm">Photo</span></label>
-    <input type="text" id="photo_link" name="photo_link" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    <input type="file" id="photo_link" name="photo_link" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 </div>
     <div class="input-group input-group-sm mb-3">
         <label for="name" class="form-label"><span class="input-group-text" id="inputGroup-sizing-sm">Name</span></label>

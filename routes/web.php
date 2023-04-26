@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ItemController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,4 +27,4 @@ Auth::routes();
 
 //Route::get('get-apart',\App\Http\Controllers\HomeController::class,'add')->name('add.apart');
 //$appartment = \App\Models\Apartment::find($request->id);
-Route::resource('items','ItemController');
+Route::resource('items',ItemController::class);
