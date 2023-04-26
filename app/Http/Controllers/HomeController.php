@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Home;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+      $homes = Home::all();
+
+      return view('homes.index',compact('homes'));
     }
+
+    public function getHome(Request $request)
+    {
+        $home = Home::find($request->id);
+        $view = view('homes.info',compact('home'))->render();
+
+        return response()->json(['view'=>$view]);
+    }
+
 }

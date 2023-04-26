@@ -22,5 +22,9 @@ Route::resources([
 ]);
 
 Auth::routes();
+//Route::get('/get-home-info',[\App\Http\Controllers\HomeController::class,'getHome'])->name('get.home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('get-apart',\App\Http\Controllers\HomeController::class,'add')->name('add.apart');
+//$appartment = \App\Models\Apartment::find($request->id);
+Route::resource('items','ItemController');

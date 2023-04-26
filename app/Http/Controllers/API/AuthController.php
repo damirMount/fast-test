@@ -41,9 +41,9 @@ class AuthController extends Controller
         }
     }
 
-    public function singIn(Request $request){
-        Validator::
-    }
+//    public function singIn(Request $request){
+//        Validator::
+//    }
 
 
 }

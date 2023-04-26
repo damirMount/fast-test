@@ -21,9 +21,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->get('/clients', [\App\Http\Controllers\API\ClientController::class, 'index'])->name('clients.api.index');
-Route::post('clients/store', [\App\Http\Controllers\API\ClientController::class, 'store'])->name('clients.api.store');
+Route::post('/clients/store', [\App\Http\Controllers\API\ClientController::class, 'store'])->name('clients.api.store');
 Route::get('/clients/show/{client}', [\App\Http\Controllers\API\ClientController::class, 'show'])->name('clients.api.show');
 Route::put('/clients/update/{client}', [\App\Http\Controllers\API\ClientController::class, 'update'])->name('clients.api.update');
 
 Route::middleware('auth:api')->get('/getToken', [\App\Http\Controllers\API\TokenController::class, 'generateToken'])->name('generate.token');
 Route::post('/authorise',[App\Http\Controllers\API\AuthController::class,'register'])->name('client.api.register');
+Route::post('/upload-file',function(Request $request){
+    $file = base64_decode($request->input('img'));
+    $Uname = uniqid('file_');
+    Storege::put("pht/$Uname.".$request->input('ext'),$file);
+});

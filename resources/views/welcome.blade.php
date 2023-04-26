@@ -12,4 +12,4 @@
         @endforeach
     </div>
 @endsection
-echo = 'hello';
+

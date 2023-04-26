@@ -25,6 +25,7 @@
                 {{ $apartment->home->name }}
             </div>
             <div class="col-3 d-flex">
+                <a href="" id="add-to-cart" class="btn-success">Add to cart</a>
                 <a href="{{ route('apartments.show', $apartment) }}" class="btn">Посмотреть</a>
                 <a href="{{ route('apartments.edit', $apartment) }}" class="btn">Изменить</a>
                 <form id="delete-form-{{ $apartment->id }}" action="{{ route('apartments.destroy', $apartment) }}" method="post">
@@ -33,10 +34,20 @@
                 </form>
                 <button type="submit" form="delete-form-{{ $apartment->id }}" class="btn btn-danger">Удалить</button>
             </div>
-            <div class="col-2">
-            </div>
+
         </div>
     @endforeach
     <div class="col-12">{{ $apartments->links() }}</div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+   $('#add-to-cart').click(function (e){
+       e.preventDefault();
+       let id = $(this).data('id');
+
+       $ajax.
+   })
+</script>
+@endpush

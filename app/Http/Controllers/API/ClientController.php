@@ -45,7 +45,7 @@ class ClientController extends Controller
         ]);
 
         if ($validation->fails()){
-            return response()->json(['status' => 'error', 'message' => $validation->getMessageBag(), 400]);
+                return response()->json(['status' => 'error', 'message' => $validation->getMessageBag(),400]);
         }
         else{
             return response()->json(['status' => 'success', $client->update($request->all())]);

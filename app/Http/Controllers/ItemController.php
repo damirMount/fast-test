@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Apartment;
-use App\Models\Home;
+use App\Models\Item;
 use Illuminate\Http\Request;
 
-class ApartmentController extends Controller
+class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::paginate(10);
-        return view('apartments.index', compact('apartments'));
+        $items = Item::all();
+        return view('items.index',compact('items'));
     }
 
     /**
@@ -26,8 +25,7 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        $homes = Apartment::all();
-        return view('apartments.create', compact('homes'));
+        return view('items.create');
     }
 
     /**
@@ -38,58 +36,54 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        Apartment::create($request->all());
-        return redirect()->route('apartments.index');
+        $items = Item::create($request->all());
+        $items->save();
+
+        return redirect()->route('items.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Apartment  $apartment
+     * @param  \App\Models\Item  $items
      * @return \Illuminate\Http\Response
      */
-    public function show(Apartment $apartment)
+    public function show(Item $items)
     {
-        return view('apartments.show', compact('apartment'));
+        return view('items.index',compact('items'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Apartment  $apartment
+     * @param  \App\Models\Item  $items
      * @return \Illuminate\Http\Response
      */
-    public function edit(Apartment $apartment)
+    public function edit(Item $items)
     {
-        $homes = Home::all();
-        return view('apartments.edit', compact('apartment','homes'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Apartment  $apartment
+     * @param  \App\Models\Item  $items
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Apartment $apartment)
+    public function update(Request $request, Item $items)
     {
-        $apartment->update($request->all());
-
-        return redirect()->route('apartments.index');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Apartment  $apartment
+     * @param  \App\Models\Item  $items
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Apartment $apartment)
+    public function destroy(Item $items)
     {
-        $apartment->delete();
-
-        return redirect()->route('apartments.index');
+        //
     }
-
 }
