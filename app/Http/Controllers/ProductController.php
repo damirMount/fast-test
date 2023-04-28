@@ -38,6 +38,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = Product::create($request->all());
+
         if ($request->has('image')) {
             $product->image = ImageUploader::upload($request->image, 'product', 'image');
         }
