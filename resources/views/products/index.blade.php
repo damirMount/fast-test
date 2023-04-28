@@ -86,7 +86,7 @@
         }
         //
         // function addToCart(item) {
-        //     var cart = JSON.parse(sessionStorage.getItem('cart'));
+        //     let cart = JSON.parse(sessionStorage.getItem('cart'));
         //     if (cart.hasOwnProperty(item.id)) {
         //         cart[item.id].quantity += item.quantity;
         //     } else {
