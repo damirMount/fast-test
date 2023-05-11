@@ -9,8 +9,8 @@ class TokenController extends Controller
 {
     public function generateToken($id)
     {
-        // $user = Auth::user();
-        // $user->createToken();
+         $user = Auth::user();
+         $user->createToken();
 
         return response()->json(['status'=>'succsess', 'token' => $user], 200);
 

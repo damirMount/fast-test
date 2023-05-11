@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\VerificationController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index'])->name('index');
 
 Route::resources([
@@ -32,6 +35,9 @@ Route::post('submit', function (\Illuminate\Http\Request $request) {
     }
 })->name('submit');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
+
+Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify')->middleware(['signed']);
+Route::post('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
