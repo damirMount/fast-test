@@ -52,7 +52,7 @@
 
             item = {
                 id: id,
-                name: name,
+                name: name,f
                 image: image,
                 price: price,
                 quantity: 1,
