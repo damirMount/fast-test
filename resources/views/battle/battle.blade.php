@@ -8,6 +8,9 @@
             <button class="btn btn-danger" id="start">Start battle</button>
         </div>
         <form action="" id="character">
+            @if()
+                <button></button>
+            @endif
             <div class="row">
                 <div class="col-3">
                     <div class="mb-3">

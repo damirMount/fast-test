@@ -22,7 +22,7 @@ Route::get('battle/start', [\App\Http\Controllers\BattleController::class, 'star
 Route::resources([
     'homes' => \App\Http\Controllers\HomeController::class,
     'apartments' => \App\Http\Controllers\ApartmentController::class,
-//    'clients' => \App\Http\Controllers\ClientController::class,
+    'clients' => \App\Http\Controllers\ClientController::class,
     'sales' => \App\Http\Controllers\SaleController::class,
 ]);
 
@@ -33,6 +33,7 @@ Auth::routes();
 Route::get('get-apart', [\App\Http\Controllers\HomeController::class, 'add'])->name('add.apart');
 
 Route::resource('products', ProductController::class);
+Route::get('/cart', [ProductController::class, 'cart'])->name('cart');
 
 
 

@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function cart()
+    {
+        return view('products.cart');
+    }
+
     /**
      * Display a listing of the resource.
      *

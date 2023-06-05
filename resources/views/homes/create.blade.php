@@ -1,4 +1,4 @@
-@extends('layout')
+{{--@extends('layout')--}}
 
 <div class="container">
     <div class="row">

@@ -1,4 +1,6 @@
-v
+@extends('layouts.app')
+
+@section('content')
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -32,13 +34,20 @@ v
     </select>
 </div>
 
+@endsection
 
 
+@push('styles')
 
+    <style>
+
+    </style>
+
+@endpush
+
+@push('scr')
 
 <script>
-
-
     $('#slct').change(function () {
         $(this).find(':selected').data('id')
     })
@@ -63,4 +72,6 @@ v
 
 </script>
 
-@endsection
+
+@endpush
+

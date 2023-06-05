@@ -8,7 +8,7 @@
                 <div class="col-3">
                     <div class="card" style="width: 18rem;">
                         <img src="{!!  asset('storage/files/' . $product->image) !!}" class="card-img-top image"
-                             id="image-{!! $product->id !!}"
+                             id="image-{{ $product->id }}"
                              data-image="{!! $product->image !!}"
                              alt="...">
                         <div class="card-body">
@@ -28,24 +28,6 @@
 
 @push('scripts')
     <script>
-        // $('.cart').click(function (e) {
-        //     e.preventDefault();
-        //     let id = $(this).data('id');
-        //     let products = [];
-        //
-        //     if ('products' in sessionStorage){
-        //         products.push(JSON.parse(sessionStorage.getItem('products')));
-        //         console.log('asd', products)
-        //         products.push([$('#image-'+id).data('image'), $('#name-'+id).data('name'), $('#price-'+id).data('price')]);
-        //
-        //         sessionStorage.setItem('products', JSON.stringify(products));
-        //     }
-        //     else {
-        //         products.push([]);
-        //
-        //         sessionStorage.setItem('products', JSON.stringify(products));
-        //     }
-        // });
         $( document ).ready(function() {
             startSession();
         });
@@ -53,7 +35,12 @@
         function startSession() {
             if (!sessionStorage.getItem('cart')) {
                 let cart = {};
+                let total = {
+                        quantity: 0,
+                        sum: 0
+                    };
                 sessionStorage.setItem('cart', JSON.stringify(cart));
+                sessionStorage.setItem('total', JSON.stringify(total));
             }
         }
 
@@ -68,32 +55,29 @@
                 name: name,
                 image: image,
                 price: price,
-                quantity: 1
+                quantity: 1,
             }
 
             let cart = JSON.parse(sessionStorage.getItem('cart'));
+            let total = JSON.parse(sessionStorage.getItem('total'));
 
             if (typeof cart !== "undefined" && cart.hasOwnProperty(item.id)) {
                 cart[item.id].quantity += item.quantity;
+                total['quantity'] += item.quantity;
             } else {
                 cart[item.id] = item;
+                total['quantity'] += 1;
             }
             sessionStorage.setItem('cart', JSON.stringify(cart));
+            sessionStorage.setItem('total', JSON.stringify(total));
+            getTotalQuantity();
         });
 
-        function getCart() {
-            return JSON.parse(sessionStorage.getItem('cart'));
+
+        function getTotalQuantity() {
+            let total = JSON.parse(sessionStorage.getItem('total'));
+            $('#cart').html(`<div id="cart">${total.quantity}</div>`);
         }
-        //
-        // function addToCart(item) {
-        //     let cart = JSON.parse(sessionStorage.getItem('cart'));
-        //     if (cart.hasOwnProperty(item.id)) {
-        //         cart[item.id].quantity += item.quantity;
-        //     } else {
-        //         cart[item.id] = item;
-        //     }
-        //     sessionStorage.setItem('cart', JSON.stringify(cart));
-        // }
 
     </script>
 @endpush

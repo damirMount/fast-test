@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Apartment;
 use App\Models\Home;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class ApartmentController extends Controller
 {
@@ -13,10 +14,17 @@ class ApartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $apartments = Apartment::paginate(10);
-        return view('apartments.index', compact('apartments'));
+        if ($request->ajax()) {
+
+            return DataTables::of(Apartment::query())
+                ->make(true);
+        }
+
+//        return view('admin.blogs.index');
+//        $apartments = Apartment::paginate(10);
+        return view('apartments.index');
     }
 
     /**
